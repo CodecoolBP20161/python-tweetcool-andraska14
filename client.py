@@ -1,6 +1,8 @@
 import argparse
 import ipaddress
-
+import requests
+import time
+from userinterface import *
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-H", "--host",
@@ -27,4 +29,11 @@ if not(1024 < server["port"] < 65535):
 
 server["address"] = 'http://' + server["host"].compressed + ':' + str(server["port"])
 
-# Logic starts here... somewhere..
+#print(server['address'])# Logic starts here... somewhere..
+#on= True
+
+while Userinterface.on:
+    Userinterface.login()
+    if Userinterface.logged_in_user != None:
+        ui = Userinterface(Userinterface.logged_in_user, server['address'])
+        ui.run_app()

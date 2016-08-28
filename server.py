@@ -50,7 +50,7 @@ def prevent_injection(value):
 #
 # Routes
 #
-@app.route('/')
+@app.route('/p')
 def connection_check():
     return 'It works!'
 
